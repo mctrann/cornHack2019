@@ -80,107 +80,129 @@ if(isset($_POST["submit"]))
   $abortion = clean_text($_POST["abortion"]);
   $emergency = clean_text($_POST["emergency"]);
   
-  $command = escapeshellcmd('/model.py');
 
-  //move to new html
+  if($error == '')
+  {
+   $file_open = fopen("dada.csv", "w");
+ 
+   $form_data = array(
+   // 'sr_no'  => $no_rows,
+    'area'  => $area,
+    'county'  => $county,
+    'ocn' => $ocn,
+    'fid' => $fid,
+    'fn' => $fn,
+    'age' => $age,
+    'zip' => $zip,
+    'sex' => $sex,
+    'race' => $race,
+    'ethnicity' => $ethnicity,
+    'admission' => $admission,
+    'digcode' => $digcode,
+    'digdes' => $digdes,
+    'procode' => $procode,
+    'prodes' => $prodes,
+    'drgc' => $drgc,
+    'drgd' => $drgd,
+    'mdcc' => $mdcc,
+    'mdcd' => $mdcd,
+    'illcode' => $illcode,
+    'illdes' => $illdes,
+    'mortality' => $mortality,
+    'surgical' => $surgical,
+    'procode' => $procode,
+    'pay1' => $pay1,
+    'pay2' => $pay2,
+    'pay3' => $pay3,
+    'attendingProvider' => $attendingProvider,
+    'operatorProvider' => $operatingProvider,
+    'otherProvider' => $otherProvider,
+    'birthWeight' => $birthWeight,
+    'abortion' => $abortion,
+    'emergency' => $emergency
+ 
+   );
+   fputcsv($file_open, $form_data);
+     $area = '';
+     $county = '';
+     $ocn = '';
+     $fid = '';
+     $fn = '';
+     $zip = '';
+     $age = '';
+     $sex = '';
+     $race = '';
+     $ethnicity = '';
+     $admission = '';
+     $digcode = '';
+     $digdes = '';
+     $procode = '';
+     $prodes = '';
+     $drgc = '';
+     $drgd = '';
+     $mdcc = '';
+     $mdcd = '';
+     $illcode = '';
+     $illdes = '';
+     $mortality = '';
+     $surgical = '';
+     $procode = '';
+     $pay1 = '';
+     $pay2 = '';
+     $pay3 = '';
+     $attendingProvider = '';
+     $operatingProvider = '';
+     $otherProvider = '';
+     $birthWeight = '';
+     $abortion = '';
+     $emergency = '';
+    
+  }
+
+
+   $command = escapeshellcmd('/model.py');
+
+//   //move to new html
   header('Location: result.html');
 
 
 }
 
-
-
-
- if($error == '')
- {
-  $file_open = fopen("dada.csv", "w");
-
-  $form_data = array(
-  // 'sr_no'  => $no_rows,
-   'area'  => $area,
-   'county'  => $county,
-   'ocn' => $ocn,
-   'fid' => $fid,
-   'fn' => $fn,
-   'age' => $age,
-   'zip' => $zip,
-   'sex' => $sex,
-   'race' => $race,
-   'ethnicity' => $ethnicity,
-   'admission' => $admission,
-   'digcode' => $digcode,
-   'digdes' => $digdes,
-   'procode' => $procode,
-   'prodes' => $prodes,
-   'drgc' => $drgc,
-   'drgd' => $drgd,
-   'mdcc' => $mdcc,
-   'mdcd' => $mdcd,
-   'illcode' => $illcode,
-   'illdes' => $illdes,
-   'mortality' => $mortality,
-   'surgical' => $surgical,
-   'procode' => $procode,
-   'pay1' => $pay1,
-   'pay2' => $pay2,
-   'pay3' => $pay3,
-   'attendingProvider' => $attendingProvider,
-   'operatorProvider' => $operatingProvider,
-   'otherProvider' => $otherProvider,
-   'birthWeight' => $birthWeight,
-   'abortion' => $abortion,
-   'emergency' => $emergency
-
-  );
-  fputcsv($file_open, $form_data);
-    $area = '';
-    $county = '';
-    $ocn = '';
-    $fid = '';
-    $fn = '';
-    $zip = '';
-    $age = '';
-    $sex = '';
-    $race = '';
-    $ethnicity = '';
-    $admission = '';
-    $digcode = '';
-    $digdes = '';
-    $procode = '';
-    $prodes = '';
-    $drgc = '';
-    $drgd = '';
-    $mdcc = '';
-    $mdcd = '';
-    $illcode = '';
-    $illdes = '';
-    $mortality = '';
-    $surgical = '';
-    $procode = '';
-    $pay1 = '';
-    $pay2 = '';
-    $pay3 = '';
-    $attendingProvider = '';
-    $operatingProvider = '';
-    $otherProvider = '';
-    $birthWeight = '';
-    $abortion = '';
-    $emergency = '';
-   
- }
- 
-
-
 ?>
+
 <!DOCTYPE html>
 <html>
  <head>
  <title>MEDH</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
  </head>
  <body>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.php">MEDHealth</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.php">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
   <br />
   <div class="container">
    <h2 align="center">MEDHealth</h2>
@@ -194,6 +216,7 @@ if(isset($_POST["submit"]))
         <label  for="area">Service Area</label>
         <div >
             <select class="form-control"  name = "area">
+                <option style="display:none">
                 <option>Finger Lakes</option>
                 <option>Capital/Adirondack</option>
                 <option>Central NY</option>
@@ -208,33 +231,34 @@ if(isset($_POST["submit"]))
 
      <div class="form-group">
       <label>Hospital County</label>
-      <input type="text" class="form-control" name="county" name = "county" placeholder="County of Hospital">
+      <input type="text" class="form-control" name="county" name = "county" maxlength = "11"  placeholder="County of Hospital">
      </div>
     
      <div class="form-group">
       <label>Operating Certificate Number</label>
-      <input type="text" class="form-control" name="ocn" placeholder="12345678">
+      <input type="text" class="form-control" name="ocn" maxlength = "8" placeholder="12345678">
      </div>
 
     <div class="form-group">
      <label>Facility ID</label>
-     <input type="number" class="form-control" name="fid" placeholder="123456">
+     <input type="number" class="form-control" name="fid" maxlength = "6" placeholder="123456">
     </div>
      
     <div class="form-group">
       <label>Facility Name</label>
-      <input type="name" class="form-control" name="fn" placeholder="Name of Facility">
+      <input type="name" class="form-control" name="fn" maxlength = "70" placeholder="Name of Facility">
     </div>
     
     <div class="form-group">
       <label>Zip Code</label>
-         <input type="number" class="form-control" name="zip" placeholder="First 3 digit of patient's zip code">
+         <input type="number" class="form-control" name="zip" maxlength = "3" placeholder="First 3 digit of patient's zip code">
     </div>
     
     <div class="form-group">
      <label>Age Group</label>
      <div>
      <select class="form-control" name="age">
+         <option style="display:none">
          <option>0-17</option>
          <option>18-29</option>
          <option>30-49</option>
@@ -248,6 +272,7 @@ if(isset($_POST["submit"]))
       <label>Sex</label>
       <div>
       <select class="form-control" name="sex">
+          <option style="display:none">
           <option>M</option>
           <option>F</option>               
        </select>
@@ -258,6 +283,7 @@ if(isset($_POST["submit"]))
       <label>Race</label>
       <div>          
         <select class="form-control" name="race">
+            <option style="display:none">
             <option>Black/African American</option>
             <option>White</option>
             <option>Native Americans</option>
@@ -273,6 +299,7 @@ if(isset($_POST["submit"]))
      <label class="control-label col-sm-2" >Ethnicity</label>
      <div>          
         <select class="form-control" name="ethnicity">
+            <option style="display:none">
             <option>Spanish/Hispanic Origin</option>
             <option>Not of Spanish/Hispanic Origin</option>
             <option>Multi</option>
@@ -284,6 +311,7 @@ if(isset($_POST["submit"]))
      <div class="form-group">
       <label>Type of Admission</label>      
         <select class="form-control" name="admission">
+            <option style="display:none">    
             <option>Elective</option>
             <option>Emergency</option>
             <option>Newborn</option>
@@ -295,47 +323,48 @@ if(isset($_POST["submit"]))
 
      <div class="form-group">
       <label>Diagnosis Code</label>
-      <input type="number" class="form-control" name="digcode" placeholder="123">
+      <input type="number" class="form-control" name="digcode" maxlength = "3" placeholder="123">
      </div>
      
      <div class="form-group">
         <label>Diagnosis Description</label>
-     <input type="text" class="form-control" name="digdes" placeholder="">
+     <input type="text" class="form-control" name="digdes" maxlength = "450" placeholder="">
      </div>
 
      <div class="form-group">
       <label>Procedure Code</label>
-      <input type="number" class="form-control" name="procode" placeholder="123">
+      <input type="number" class="form-control" name="procode" maxlength = "3" placeholder="123">
      </div>
 
      <div class="form-group">
       <label>Procedure Description</label>
-      <input type="text" class="form-control" name="prodes" placeholder="">
+      <input type="text" class="form-control" name="prodes" maxlength = "450" placeholder="">
      </div>
 
      <div class = "form-group">
         <label>DRG Code</label>
-        <input type="number" class="form-control" name="drgc" placeholder="123">
+        <input type="number" class="form-control" name="drgc" maxlength = "3" placeholder="123">
      </div>
 
      <div class="form-group">
       <label>DRG Description</label>
-      <input type="text" class="form-control" name="drgd" placeholder="">
+      <input type="text" class="form-control" name="drgd" maxlength = "89" placeholder="">
      </div>
 
      <div class="form-group">
       <label>MDC Code</label>
-      <input type="number" class="form-control" name="mdcc" placeholder="123">
+      <input type="number" class="form-control" name="mdcc" maxlength = "2" placeholder="123">
      </div>
 
      <div>
         <label>MDC Description</label>
-        <input type="text" class="form-control" name="mdcd" placeholder="">
+        <input type="text" class="form-control" name="mdcd" maxlength = "200" placeholder="">
      </div>
 
      <div class="form-group">
       <label>Severity of Illness Code</label>
       <select class="form-control" name="illcode">
+        <option style="display:none">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -346,6 +375,7 @@ if(isset($_POST["submit"]))
      <div class="form-group">
       <label>Severity of Illness Description</label>
       <select class="form-control" name="illdes">                               
+        <option style="display:none">
         <option>Minor</option>
         <option>Moderate</option>
         <option>Major</option>
@@ -356,6 +386,7 @@ if(isset($_POST["submit"]))
      <div class="form-group">
       <label>Risk of Mortality</label>
       <select class="form-control" name="mortality">                               
+        <option style="display:none">
         <option>Minor</option>
         <option>Moderate</option>
         <option>Major</option>
@@ -366,6 +397,7 @@ if(isset($_POST["submit"]))
      <div class="form-group">
       <label>Surgical Description </label>
       <select class="form-control" name="surgical">                               
+        <option style="display:none">
         <option>Medical</option>
         <option>Surgical</option>
         <option>Not Applicable</option>
@@ -374,42 +406,43 @@ if(isset($_POST["submit"]))
 
      <div class="form-group">
       <label>Payment Type 1</label>
-      <input type="text" class="form-control" name="pay1" placeholder="Type of Payment">
+      <input type="text" class="form-control" name="pay1" maxlength = "25" placeholder="Type of Payment">
      </div>
 
      <div class="form-group">
       <label>Payment Type 2</label>
-      <input type="text" class="form-control" name="pay2" placeholder="Type of Payment">
+      <input type="text" class="form-control" name="pay2" maxlength = "25" placeholder="Type of Payment">
      </div>
      
      <div class="form-group">
       <label>Payment Type 3</label>
-      <input type="text" class="form-control" name="pay3" placeholder="Type of Payment">
+      <input type="text" class="form-control" name="pay3" maxlength = "25" placeholder="Type of Payment">
      </div>
 
      <div class="form-group">
       <label>Attending Provider License Number</label>
-      <input type="number" class="form-control" name="attendingProvider" placeholder="12345678">
+      <input type="number" class="form-control" name="attendingProvider" maxlength = "8" placeholder="12345678">
      </div>
 
      <div class="form-group">
       <label>Operating Provider License Number</label>
-      <input type="number" class="form-control" name="operatingProvider" placeholder="12345678">
+      <input type="number" class="form-control" name="operatingProvider" maxlength = "8" placeholder="12345678">
      </div>
 
      <div class="form-group">
       <label>Other Provider License Number</label>
-      <input type="number" class="form-control" name="otherProvider" placeholder="12345678">
+      <input type="number" class="form-control" name="otherProvider" maxlength = "8"  placeholder="12345678">
      </div>
 
      <div class="form-group">
       <label>Birth Weight</label>
-      <input type="number" class="form-control" name="birthWeight" placeholder="Round to nearest 100g">
+      <input type="number" class="form-control" name="birthWeight" maxlength = "4" placeholder="Round to nearest 100g">
      </div>
 
     <div class="form-group">
       <label>Abortion Edit Indicator </label>
       <select class="form-control" name="abortion">                               
+        <option style="display:none">
         <option>Y</option>
         <option>N</option>
        </select>     
@@ -418,6 +451,7 @@ if(isset($_POST["submit"]))
      <div class="form-group">
       <label>Emergency Indicator </label>
       <select class="form-control" name="emergency">                               
+        <option style="display:none">  
         <option>Y</option>
         <option>N</option>
        </select>     
