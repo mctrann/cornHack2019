@@ -79,7 +79,7 @@ if(isset($_POST["submit"]))
   $birthWeight = clean_text($_POST["birthWeight"]);
   $abortion = clean_text($_POST["abortion"]);
   $emergency = clean_text($_POST["emergency"]);
-
+  header('Location: result.html');
 
 
 }
@@ -162,7 +162,9 @@ if(isset($_POST["submit"]))
     $birthWeight = '';
     $abortion = '';
     $emergency = '';
+   
  }
+ 
 
 
 ?>
