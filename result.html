@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MEDHealth</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jquery-->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <!-- parse json data-->
+     <script>
+        (function() {
+          $.getJSON( "test.json", function(data){
+            console.log( data.total);
+            console.log( data.length);
+            console.log( data.charges);
+
+            var length = data.length;
+            $("#length").html(JSON.stringify("Duration of stay: " + length +" days").replace(/['"]+/g, ''));
+
+            var total = data.total;
+            $("#total").html(JSON.stringify('Total cost of stay: $ ' + total).replace(/['"]+/g, ''));
+
+
+            var charges = data.charges;
+            $("#charges").html(JSON.stringify('Total Charges: $ ' + charges).replace(/['"]+/g, ''));
+            
+          })
+        })();
+
+        </script>
+        
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.php">MEDHealth</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.php">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class = "text-center">
+        <h1 class="mt-5">Results</h1>
+        <h2>Your Patient's predicted...</h2>
+        <h3 id='length'></h3>
+        <h3 id='total'></h3>
+        <h3 id='charges'></h3>
+    </div>
+    
+
+    
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+<footer>
+  <div class = "container">
+    <ul class="list-unstyled">
+    
+    </ul>
+  </div>
+  
+</footer>
+</html>
