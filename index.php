@@ -98,8 +98,8 @@ if(isset($_POST["submit"]))
    'ocn' => $ocn,
    'fid' => $fid,
    'fn' => $fn,
-   'zip' => $zip,
    'age' => $age,
+   'zip' => $zip,
    'sex' => $sex,
    'race' => $race,
    'ethnicity' => $ethnicity,
@@ -276,7 +276,7 @@ if(isset($_POST["submit"]))
      </div>
 
      <div class="form-group">
-      <label>Type of Admission</label>>          
+      <label>Type of Admission</label>      
         <select class="form-control" name="admission">
             <option>Elective</option>
             <option>Emergency</option>
