@@ -79,6 +79,10 @@ if(isset($_POST["submit"]))
   $birthWeight = clean_text($_POST["birthWeight"]);
   $abortion = clean_text($_POST["abortion"]);
   $emergency = clean_text($_POST["emergency"]);
+  
+  $command = escapeshellcmd('/model.py');
+
+  //move to new html
   header('Location: result.html');
 
 
@@ -171,7 +175,7 @@ if(isset($_POST["submit"]))
 <!DOCTYPE html>
 <html>
  <head>
- <title>Predict</title>
+ <title>MEDH</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -179,7 +183,7 @@ if(isset($_POST["submit"]))
  <body>
   <br />
   <div class="container">
-   <h2 align="center">Predict.Stay</h2>
+   <h2 align="center">MEDHealth</h2>
    <br />
    <div class="col-md-6" style="margin:0 auto; float:none;">
     <form method="post">
@@ -219,7 +223,7 @@ if(isset($_POST["submit"]))
      
     <div class="form-group">
       <label>Facility Name</label>
-      <input type="number" class="form-control" name="fn" placeholder="123456">
+      <input type="name" class="form-control" name="fn" placeholder="Name of Facility">
     </div>
     
     <div class="form-group">
@@ -231,11 +235,11 @@ if(isset($_POST["submit"]))
      <label>Age Group</label>
      <div>
      <select class="form-control" name="age">
-         <option>0-17 years old</option>
-         <option>18-29 years old</option>
-         <option>30-49 years old</option>
-         <option>50-69 years old</option>
-         <option>70 years old or older</option>
+         <option>0-17</option>
+         <option>18-29</option>
+         <option>30-49</option>
+         <option>50-69</option>
+         <option>70 or Older</option>
     </select>
      </div>
     </div>
