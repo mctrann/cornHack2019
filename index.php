@@ -160,7 +160,7 @@ if(isset($_POST["submit"]))
   }
 
 
-   $command = escapeshellcmd('/model.py');
+   $command = escapeshellcmd('/prediction.py');
 
 //   //move to new html
   header('Location: result.html');
