@@ -24,14 +24,15 @@
             console.log( data.length);
             console.log( data.charges);
 
-            var total = data.total;
-            $("#total").html(JSON.stringify('Total cost of stay: $ ' + total).replace(/['"]+/g, ''));
-
             var length = data.length;
             $("#length").html(JSON.stringify("Duration of stay: " + length +" days").replace(/['"]+/g, ''));
 
+            var total = data.total;
+            $("#total").html(JSON.stringify('Total cost of stay: $ ' + total).replace(/['"]+/g, ''));
+
+
             var charges = data.charges;
-            $("#charges").html(JSON.stringify('Number of Charges: ' + charges).replace(/['"]+/g, ''));
+            $("#charges").html(JSON.stringify('Total Charges: $ ' + charges).replace(/['"]+/g, ''));
             
           })
         })();
@@ -45,33 +46,33 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Predict.Stay</a>
+        <a class="navbar-brand" href="index.php">MEDHealth</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home
+              <a class="nav-link" href="index.php">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
     </nav>
 
     <div class = "text-center">
-        <h1 class="mt-5">MEDHealth Results</h1>
+        <h1 class="mt-5">Results</h1>
         <h2>Your Patient's predicted...</h2>
-        <h3 id='total'></h3>
         <h3 id='length'></h3>
+        <h3 id='total'></h3>
         <h3 id='charges'></h3>
     </div>
     
